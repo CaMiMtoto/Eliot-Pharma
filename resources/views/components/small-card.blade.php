@@ -40,7 +40,7 @@
             </span>
         </div>
         <div class="text-center">
-            <a href="#"
+            <a href="{{ route('products.details',$product->id) }}"
                class="btn d-inline-flex align-items-center justify-content-center gap-2  fw-semibold text-primary-emphasis  tw-rounded-lg text-uppercase">
                 <x-lucide-eye class="tw-w-5 tw-h-5"/>
                 View Details

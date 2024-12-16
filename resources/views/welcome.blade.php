@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@section("title","Home")
 @section('content')
-    <div class="container">
+    <div class="container my-4">
         <div class="row tw-h-[70vh] overflow-hidden">
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div
@@ -15,7 +16,7 @@
                     Providing trusted healthcare solutions for you and your family. Shop the best prescription
                     medicines, supplements, and health products at affordable prices.
                 </p>
-                <a href="{{ route('register') }}"
+                <a href="{{ route('products') }}"
                    class="btn btn-primary btn-lg text-white px-4 tw-rounded-xl tw-text-base text-uppercase py-3">
                     Browse Products
                 </a>

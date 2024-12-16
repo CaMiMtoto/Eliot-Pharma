@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/products', \App\Livewire\ProductList::class)->name('products');
+Route::get('/products/{product}/details', \App\Livewire\ProductDetail::class)->name('products.details');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
