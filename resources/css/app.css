@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropdown-menu {
+    @apply tw-z-10 tw-mt-2 tw-w-56 tw-bg-white tw-rounded-lg tw-shadow-lg tw-border tw-border-slate-100;
+}

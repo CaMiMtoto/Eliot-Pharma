@@ -4,15 +4,17 @@
 <!--begin::Head-->
 <head>
     <base href=""/>
-    <title>Oswald HTML Free - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme by Keenthemes</title>
+    <title>
+        {{ config('app.name') }} | @yield('title')
+    </title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}"/>
-    <!--begin::Fonts(mandatory for all pages)-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
-    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <!-- Scripts -->
-    @vite(['resources/sass/master.scss','resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/sass/master.scss', 'resources/js/master.js','resources/css/app.css'])
+    @yield('styles')
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -90,40 +92,81 @@
 
 <!--begin::Javascript-->
 <script>const hostUrl = "assets/";</script>
-<!--begin::Global Javascript Bundle(mandatory for all pages)-->
-<script src="assets/plugins/global/plugins.bundle.js"></script>
-<script src="assets/js/scripts.bundle.js"></script>
-<!--end::Global Javascript Bundle-->
-<!--begin::Vendors Javascript(used for this page only)-->
-<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
-<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-<!--end::Vendors Javascript-->
-<!--begin::Custom Javascript(used for this page only)-->
-<script src="assets/js/widgets.bundle.js"></script>
-<script src="assets/js/custom/apps/chat/chat.js"></script>
-<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
-<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
-<script src="assets/js/custom/utilities/modals/users-search.js"></script>
-<!--end::Custom Javascript-->
-<!--end::Javascript-->
+{{--<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+@stack('scripts')--}}
+
+<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+@livewireScripts
+<script>
+    // initialize pikaday .datepicker
+    document.querySelectorAll('.datepicker').forEach(function (el) {
+        new Pikaday({
+            field: el,
+            format: 'YYYY-MM-DD',
+        });
+    });
+    document.querySelectorAll('.datetimepicker').forEach(function (el) {
+        new Pikaday({
+            field: el,
+            format: 'YYYY-MM-DD HH:mm',
+            timeFormat: 'HH:mm',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+        });
+    });
+
+
+    $(document).ready(function () {
+        $(document).on('click', '.js-delete', function (e) {
+            e.preventDefault();
+            let url = $(this).attr('href');
+            let method = 'DELETE';
+            let token = $('meta[name="csrf-token"]').attr('content');
+            let data = {
+                _token: token,
+                _method: method
+            };
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url,
+                        method: 'DELETE',
+                        data: data,
+                        success: function (response) {
+                            if (window.dt) {
+                                window.dt.ajax.reload();
+                            } else {
+                                window.location.reload();
+                            }
+                        },
+                        error: function (response) {
+                            console.log(response);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Something went wrong, please try again',
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                        }
+                    })
+                }
+            })
+
+        })
+    });
+</script>
+@stack('scripts')
+
 </body>
 <!--end::Body-->
 </html>

@@ -18,7 +18,7 @@ export default {
     },
     prefix: 'tw-',
     important: true,
-    plugins: [forms],
+    // plugins: [forms],
     corePlugins: {
         preflight: false,
     }

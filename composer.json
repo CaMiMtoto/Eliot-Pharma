@@ -10,12 +10,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-snappy": "*",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.6",
-        "mallardduck/blade-lucide-icons": "^1.23"
+        "livewire/livewire": "^3.5",
+        "mallardduck/blade-lucide-icons": "^1.23",
+        "yajra/laravel-datatables": "^11.0",
+        "yajra/laravel-datatables-export": "^11.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.14",
+        "barryvdh/laravel-ide-helper": "^3.2",
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.2",
         "laravel/pail": "^1.1",

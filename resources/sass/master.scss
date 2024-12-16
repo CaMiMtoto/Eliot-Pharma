@@ -1,1 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "sweetalert2/src/sweetalert2";
 @import 'style';
+// DataTables
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+
+* {
+    font-family: "Inter", sans-serif !important;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/*.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0;
+    vertical-align: 0;
+    content: none;
+    border-top: 0 solid;
+    border-right: 0 solid transparent;
+    border-bottom: 0;
+    border-left: 0 solid transparent;
+}*/

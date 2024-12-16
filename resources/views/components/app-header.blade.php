@@ -325,7 +325,7 @@
                     class="menu menu-rounded menu-active-bg menu-state-primary menu-column menu-lg-row menu-title-gray-700 menu-icon-gray-500 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                     id="kt_app_header_menu" data-kt-menu="true">
 
-                    <a href="" class="menu-item here menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                    <a href="" class="menu-item  menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-gauge class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Dashboard</span>
@@ -337,7 +337,7 @@
                             <span class="menu-title">Categories</span>
                         </span>
                     </a>
-                    <a href="" class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                    <a href="{{ route('admin.products.index') }}" class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.products.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-pill-bottle class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Products</span>
