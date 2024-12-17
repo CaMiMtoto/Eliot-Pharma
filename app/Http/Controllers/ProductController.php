@@ -132,7 +132,7 @@ class ProductController extends Controller
             'price' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'numeric', 'min:0'],
             'is_featured' => ['nullable'],
-            'image' => ['image', 'required_if:id,0'],
+            'image' => ['file','mimes:jpeg,png,jpg,svg,avif'],
             'discount_percentage' => ['nullable', 'numeric', 'min:0', 'max:100'],
         ];
     }

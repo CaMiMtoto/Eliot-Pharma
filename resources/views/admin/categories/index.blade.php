@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title','Products')
+@section('title','categories')
 @section('toolbar')
     <div class="d-flex flex-stack flex-wrap gap-4 w-100">
         <!--begin::Page title-->
         <div class="page-title d-flex flex-column gap-3 me-3">
             <!--begin::Title-->
             <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2x my-0">
-                Products
+                categories
             </h1>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
@@ -24,7 +24,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Manage Products</li>
+                <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Manage categories</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -50,22 +50,19 @@
     <div class="card card-body">
         <div>
             <h4>
-                All Products
+                All categories
             </h4>
             <p>
-                Manage all your products here.
+                Manage all your categories here.
             </p>
         </div>
         <div class="table-responsive">
-            <table class="table ps-2 align-middle border rounded table-row-dashed fs-6 g-5" id="myTable">
+            <table class="table ps-2 align-middle border rounded table-row-dashed table-row-gray-300 fs-6 gy-2" id="myTable">
                 <thead>
                 <tr class="text-start text-gray-800 fw-bold fs-7 text-uppercase">
-                    <th>Image</th>
                     <th>Created At</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Is Featured</th>
+                    <th>Products</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -84,12 +81,12 @@
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Product</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="" action="{{ route('admin.products.store') }}" id="submit-form" method="POST">
+                <form class="" action="{{ route('admin.categories.store') }}" id="submit-form" method="POST">
                     @csrf
-                    <input type="hidden" name="id" id="product_id" value="0"/>
+                    <input type="hidden" name="id" id="category_id" value="0"/>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
@@ -99,43 +96,10 @@
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="price" class="form-label">Price</label>
-                                    <input type="text" class="form-control" id="price" name="price" placeholder="Price">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="stock" class="form-label">Stock</label>
-                                    <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="category_id" class="form-label">Category</label>
-                            <select class="form-select" id="category_id" name="category_id">
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="discount_percentage" class="form-label">Discount Percentage</label>
-                            <input type="number" class="form-control" id="discount_percentage" name="discount_percentage">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">
-                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>
@@ -150,7 +114,7 @@
             const myModal = new bootstrap.Modal(document.getElementById('addModal'), {});
             $('#addBtn').on('click', function () {
                 $('#submit-form')[0].reset();
-                $('#product_id').val(0);
+                $('#category_id').val(0);
                 myModal.show();
             });
 
@@ -165,28 +129,20 @@
                 },
                 columns: [
                     {
-                        data: 'id', name: 'id',
-                        render: function (data, type, row) {
-                            return `<img src="${row.image_url}" alt="Image" class="img-fluid tw-h-10"/>`
-                        }
-                    },
-                    {
-                        data: 'created_at', name: 'created_at',
+                        data: 'updated_at', name: 'updated_at',
                         render: function (data) {
                             return moment(data).format('DD-MM-YYYY');
                         }
                     },
                     {data: 'name', name: 'name'},
-                    {data: 'category.name', name: 'category.name'},
-                    {data: 'price', name: 'price'},
-                    {
-                        data: 'is_featured', name: 'is_featured',
+                    {data:'id', name: 'id',
                         render: function (data, type, row) {
-                            return `<span class="badge bg-${row.status_color}-subtle rounded-pill text-${row.status_color}">${data}</span>`;
+                            return row.products_count;
                         }
                     },
                     {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'},
                 ],
+                order: [[0, 'desc']]
             });
             const $submitForm = $('#submit-form');
             $submitForm.submit(function (e) {
@@ -249,13 +205,9 @@
                     url: url,
                     type: 'GET',
                     success: function (data) {
-                        $('#product_id').val(data.id);
+                        $('#category_id').val(data.id);
                         $('#name').val(data.name);
                         $('#description').val(data.description);
-                        $('#price').val(data.price);
-                        $('#stock').val(data.stock);
-                        $('#category_id').val(data.category_id);
-                        $('#discount_percentage').val(data.discount_percentage);
                         $('#addModal').modal('show');
                     },
                     error: function (error) {
@@ -264,24 +216,6 @@
                 });
             });
 
-            $(document).on('click', '.js-toggle-featured', function (e) {
-                e.preventDefault();
-                const url = $(this).data('url');
-                $.ajax({
-                    url: url,
-                    method: 'PUT',
-                    data: {
-                        '_token': $('meta[name="csrf-token"]').attr('content'),
-                    },
-                    success: function (data) {
-                        console.log(data);
-                        dt.ajax.reload();
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-            });
         });
 
     </script>

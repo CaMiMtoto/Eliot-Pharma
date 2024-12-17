@@ -18,8 +18,10 @@
                     <!--end::Header toggle-->
                     <!--begin::Logo-->
                     <a href="" class="d-flex align-items-center  mb-lg-0 pt-lg-1">
-                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-sm.jpg')}}" class="d-block d-sm-none tw-h-10"/>
-                        <img alt="Logo" src="{{ asset('assets/media/logos/logo.jpg') }}" class="d-none d-sm-block tw-h-16"/>
+                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-sm.jpg')}}"
+                             class="d-block d-sm-none tw-h-10"/>
+                        <img alt="Logo" src="{{ asset('assets/media/logos/logo.jpg') }}"
+                             class="d-none d-sm-block tw-h-16"/>
                     </a>
                     <!--end::Logo-->
                 </div>
@@ -331,16 +333,25 @@
                             <span class="menu-title">Dashboard</span>
                         </span>
                     </a>
-                    <a href="" class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                    <a href="{{ route('admin.categories.index') }}"
+                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.categories.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-group class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Categories</span>
                         </span>
                     </a>
-                    <a href="{{ route('admin.products.index') }}" class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.products.*') ? 'here' : '' }}">
+                    <a href="{{ route('admin.products.index') }}"
+                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.products.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-pill-bottle class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Products</span>
+                        </span>
+                    </a>
+                    <a href="{{ route('admin.working-hours.index') }}"
+                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.working-hours.*') ? 'here' : '' }}">
+                        <span class="menu-link">
+                            <span class="menu-icon"><x-lucide-calendar-clock class="tw-h-6 tw-w-6"/></span>
+                            <span class="menu-title">Working Hours</span>
                         </span>
                     </a>
 

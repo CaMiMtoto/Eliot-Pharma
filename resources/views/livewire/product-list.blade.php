@@ -62,7 +62,7 @@
                 </div>
                 <div class="row" wire:loading.class="opacity-50">
                     @foreach($products as $product)
-                        <div class="col-lg-4 col-md-6 my-2 col-12">
+                        <div class="col-xl-4 col-md-6 my-2 col-12">
                             <x-small-card :product="$product"></x-small-card>
                         </div>
                     @endforeach

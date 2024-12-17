@@ -17,7 +17,7 @@
                     medicines, supplements, and health products at affordable prices.
                 </p>
                 <a href="{{ route('products') }}"
-                   class="btn btn-primary btn-lg text-white px-4 tw-rounded-xl tw-text-base text-uppercase py-3">
+                   class="btn btn-primary btn-lg text-white px-4 tw-rounded-sm tw-text-base text-uppercase py-3">
                     Browse Products
                 </a>
             </div>

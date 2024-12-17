@@ -89,11 +89,17 @@
         </div>
 
         <div class="row">
-            @foreach($relatedProducts as $item)
+            @forelse($relatedProducts as $item)
                 <div class="col-md-4 col-lg-3">
                     <x-small-card :product="$item"/>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                   <div class="alert alert-warning" role="alert">
+                       No related products found.
+                   </div>
+                </div>
+            @endforelse
         </div>
 
     </div>
