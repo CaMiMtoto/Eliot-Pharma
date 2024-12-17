@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,13 @@ class HomeController extends Controller
         // shuffle $featuredProducts to take one randomly
         $frontProduct = $featuredProducts->random(1)->first();
         $featuredProducts = $featuredProducts->filter(fn($product) => $product->id != $frontProduct->id);
-        return view('welcome', compact('featuredProducts', 'frontProduct'));
+
+        $featuredCategories = Category::query()
+            ->whereHas('products')
+            ->where('is_featured', '=', true)
+            ->with('products')
+            ->limit(2)->latest()->get();
+        return view('welcome', compact('featuredProducts', 'frontProduct', 'featuredCategories'));
     }
 
     /**

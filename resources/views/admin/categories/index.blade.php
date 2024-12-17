@@ -57,12 +57,14 @@
             </p>
         </div>
         <div class="table-responsive">
-            <table class="table ps-2 align-middle border rounded table-row-dashed table-row-gray-300 fs-6 gy-2" id="myTable">
+            <table class="table ps-2 align-middle border rounded table-row-dashed table-row-gray-300 fs-6 gy-2"
+                   id="myTable">
                 <thead>
                 <tr class="text-start text-gray-800 fw-bold fs-7 text-uppercase">
                     <th>Created At</th>
                     <th>Name</th>
                     <th>Products</th>
+                    <th>Featured?</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -91,6 +93,14 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured">
+                                <label class="form-check-label" for="is_featured">
+                                    Set as featured category
+                                </label>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
@@ -135,9 +145,16 @@
                         }
                     },
                     {data: 'name', name: 'name'},
-                    {data:'id', name: 'id',
+                    {
+                        data: 'id', name: 'id',
                         render: function (data, type, row) {
                             return row.products_count;
+                        }
+                    },
+                    {
+                        data: 'is_featured', name: 'is_featured',
+                        render: function (data, type, row) {
+                            return `<span class="badge bg-${row.is_featured?'success':'secondary'}-subtle rounded-pill">${row.is_featured?'Yes':'No'}</span>`
                         }
                     },
                     {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'},
@@ -208,6 +225,7 @@
                         $('#category_id').val(data.id);
                         $('#name').val(data.name);
                         $('#description').val(data.description);
+                        $('#is_featured').prop('checked', data.is_featured);
                         $('#addModal').modal('show');
                     },
                     error: function (error) {

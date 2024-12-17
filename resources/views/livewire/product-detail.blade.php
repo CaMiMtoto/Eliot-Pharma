@@ -7,7 +7,7 @@
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('products') }}">Products</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        {{ $product->name }}
+                        {{ \Illuminate\Support\Str::of($product->name)->limit() }}
                     </li>
                 </ol>
             </nav>
