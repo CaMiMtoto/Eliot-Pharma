@@ -32,11 +32,11 @@ cp.env.example .env
 
 ```
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=eliot_pharma
-DB_USERNAME=root
-DB_PASSWORD=
+DB_HOST=x.x.x.x
+DB_PORT=xxxx
+DB_DATABASE=xxx
+DB_USERNAME=xxx
+DB_PASSWORD=xxx
 ```
 
 4. Run the migrations:
