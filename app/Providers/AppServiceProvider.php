@@ -44,4 +44,6 @@ class AppServiceProvider extends ServiceProvider
             View::share('working_days', $workingDays);
         }
     }
+
+
 }

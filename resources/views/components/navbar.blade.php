@@ -42,13 +42,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav mx-auto gap-4">
                 <li class="nav-item">
-                    <form action="{{ route('products') }}" method="get" class="position-relative">
-                        <input type="text" name="search"
-                               class="form-control form-control-lg rounded-1 tw-text-sm lg:tw-w-96"
-                               placeholder="Search .." aria-label="Search"/>
-                        <x-lucide-search
-                                class="tw-absolute tw-inset-y-0 tw-top-2  tw-right-2 tw-flex tw-items-center tw-pr-2 tw-text-gray-400 tw-h-6 tw-w-6"/>
-                    </form>
+                    <livewire:nav-search/>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Home</a>

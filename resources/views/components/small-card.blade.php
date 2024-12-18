@@ -1,4 +1,4 @@
-<div {{ $attributes->class(['card position-relative tw-border-slate-100 hover:tw-border-slate-200 h-100 hover:tw-border-dashed tw-border-2  tw-rounded-sm']) }}>
+<div {{ $attributes->class(['card position-relative tw-border-slate-100 hover:tw-border-slate-200 h-100 hover:tw-border-dashed tw-border-2  tw-rounded-sm tw-z-2']) }}>
     <img
         src="{{asset('assets/media/misc/loader-circle.svg')}}"
         data-src="{{ $product->imageUrl }}"
