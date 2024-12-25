@@ -8,7 +8,7 @@
     </form>
     @if($search)
         <div
-            class="position-absolute tw-top-12 scroll-container left-0 w-100 tw-max-h-[50vh] bg-light tw-z-[11]  border tw-rounded-xl tw-border-gray-200 tw-overflow-auto tw-text-sm tw-text-gray-700 tw-py-1">
+            class="position-absolute tw-top-12 scroll-container left-0 w-100 tw-max-h-[50vh] bg-light tw-z-50  border tw-rounded-xl tw-border-gray-200 tw-overflow-auto tw-text-sm tw-text-gray-700 tw-py-1">
             <div class="list-group list-group-flush" wire:loading.remove>
                 @foreach($products as $product)
                     <a href="{{ route('products.details', $product->id) }}"

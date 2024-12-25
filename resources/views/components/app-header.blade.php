@@ -52,10 +52,12 @@
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bold d-flex align-items-center fs-5">Max Smith
-                                        <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
+                                    <div class="fw-bold d-flex align-items-center fs-5">
+                                        {{ auth()->user()->name }}
                                     </div>
-                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                    <div class="fw-semibold text-muted small text-hover-primary fs-7 text-wrap">
+                                        {{ auth()->user()->email }}
+                                    </div>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -69,76 +71,7 @@
                             <a href="" class="menu-link px-5">My Profile</a>
                         </div>
                         <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="" class="menu-link px-5">
-                                <span class="menu-text">My Projects</span>
-                                <span class="menu-badge">
-													<span
-                                                        class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-												</span>
-                            </a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                             data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title">My Subscription</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Referrals</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Billing</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Payments</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link d-flex flex-stack px-5">Statements
-                                        <span class="ms-2 lh-0" data-bs-toggle="tooltip" title="View your statements">
-														<i class="ki-duotone ki-information-5 fs-5">
-															<span class="path1"></span>
-															<span class="path2"></span>
-															<span class="path3"></span>
-														</i>
-													</span></a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu separator-->
-                                <div class="separator my-2"></div>
-                                <!--end::Menu separator-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <div class="menu-content px-3">
-                                        <label class="form-check form-switch form-check-custom form-check-solid">
-                                            <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
-                                                   checked="checked" name="notifications"/>
-                                            <span class="form-check-label text-muted fs-7">Notifications</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="#" class="menu-link px-5">My Statements</a>
-                        </div>
-                        <!--end::Menu item-->
+
                         <!--begin::Menu separator-->
                         <div class="separator my-2"></div>
                         <!--end::Menu separator-->
@@ -226,75 +159,19 @@
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                             data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-                            <a href="#" class="menu-link px-5">
-												<span class="menu-title position-relative">Language
-												<span
-                                                    class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-												<img class="w-15px h-15px rounded-1 ms-2"
-                                                     src="assets/media/flags/united-states.svg" alt=""/></span></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../dist/account/settings.html" class="menu-link d-flex px-5 active">
-													<span class="symbol symbol-20px me-4">
-														<img class="rounded-1"
-                                                             src="assets/media/flags/united-states.svg" alt=""/>
-													</span>English</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../dist/account/settings.html" class="menu-link d-flex px-5">
-													<span class="symbol symbol-20px me-4">
-														<img class="rounded-1" src="assets/media/flags/spain.svg"
-                                                             alt=""/>
-													</span>Spanish</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../dist/account/settings.html" class="menu-link d-flex px-5">
-													<span class="symbol symbol-20px me-4">
-														<img class="rounded-1" src="assets/media/flags/germany.svg"
-                                                             alt=""/>
-													</span>German</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../dist/account/settings.html" class="menu-link d-flex px-5">
-													<span class="symbol symbol-20px me-4">
-														<img class="rounded-1" src="assets/media/flags/japan.svg"
-                                                             alt=""/>
-													</span>Japanese</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../dist/account/settings.html" class="menu-link d-flex px-5">
-													<span class="symbol symbol-20px me-4">
-														<img class="rounded-1" src="assets/media/flags/france.svg"
-                                                             alt=""/>
-													</span>French</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
                         <div class="menu-item px-5 my-1">
                             <a href="" class="menu-link px-5">Account Settings</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="" class="menu-link px-5">Sign
-                                Out</a>
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                @csrf
+                            </form>
+                            <a href="{{ route('logout') }}" class="menu-link px-5"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sign Out
+                            </a>
                         </div>
                         <!--end::Menu item-->
                     </div>
@@ -333,67 +210,75 @@
                             <span class="menu-title">Dashboard</span>
                         </span>
                     </a>
-                    <a href="{{ route('admin.categories.index') }}"
-                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.categories.*') ? 'here' : '' }}">
+                    @can(\App\Constants\AppPermission::MANAGE_CATEGORIES)
+                        <a href="{{ route('admin.categories.index') }}"
+                           class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.categories.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-group class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Categories</span>
                         </span>
-                    </a>
-                    <a href="{{ route('admin.products.index') }}"
-                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.products.*') ? 'here' : '' }}">
+                        </a>
+                    @endcan
+                    @can(\App\Constants\AppPermission::MANAGE_PRODUCTS)
+                        <a href="{{ route('admin.products.index') }}"
+                           class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.products.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-pill-bottle class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Products</span>
                         </span>
-                    </a>
-                    <a href="{{ route('admin.working-hours.index') }}"
-                       class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.working-hours.*') ? 'here' : '' }}">
+                        </a>
+                    @endcan
+                    @can(\App\Constants\AppPermission::MANAGE_WORKING_HOURS)
+                        <a href="{{ route('admin.working-hours.index') }}"
+                           class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2 {{ \Illuminate\Support\Facades\Route::is('admin.working-hours.*') ? 'here' : '' }}">
                         <span class="menu-link">
                             <span class="menu-icon"><x-lucide-calendar-clock class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Working Hours</span>
                         </span>
-                    </a>
+                        </a>
+                    @endcan
 
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
-                         class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
+                    @canany([\App\Constants\AppPermission::MANAGE_ROLES,\App\Constants\AppPermission::MANAGE_ROLES,\App\Constants\AppPermission::MANAGE_USERS])
+                        <!--begin:Menu item-->
+                        <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                             data-kt-menu-placement="bottom-start"
+                             class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2  {{ \Illuminate\Support\Facades\Route::is('admin.system.*') ? 'here' : '' }}">
+                            <!--begin:Menu link-->
+                            <span class="menu-link ">
                             <span class="menu-icon"><x-lucide-settings class="tw-h-6 tw-w-6"/></span>
                             <span class="menu-title">Settings</span>
                             <span class="menu-arrow d-lg-none"></span>
                         </span>
-                        <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div
-                            class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px mt-5">
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Users</span>
-                                </a>
-                                <!--end:Menu link-->
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Roles</span>
-                                </a>
-                                <!--end:Menu link-->
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="">
-                                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Permissions</span>
-                                </a>
-                                <!--end:Menu link-->
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+                            <div
+                                class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px mt-5">
+                                <!--begin:Menu item-->
+                                <div class="menu-item">
+                                    @can(\App\Constants\AppPermission::MANAGE_USERS)
+                                        <a class="menu-link" href="{{ route('admin.system.users.index') }}">
+                                            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                                            <span class="menu-title">Users</span>
+                                        </a>
+                                    @endcan
+                                    @can(\App\Constants\AppPermission::MANAGE_ROLES)
+                                        <a class="menu-link" href="{{ route('admin.system.roles.index') }}">
+                                            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                                            <span class="menu-title">Roles</span>
+                                        </a>
+                                    @endcan
+                                    @can(\App\Constants\AppPermission::MANAGE_PERMISSIONS)
+                                        <a class="menu-link " href="{{ route('admin.system.permissions.index') }}">
+                                            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                                            <span class="menu-title">Permissions</span>
+                                        </a>
+                                    @endcan
+                                </div>
                             </div>
+                            <!--end:Menu sub-->
                         </div>
-                        <!--end:Menu sub-->
-                    </div>
-                    <!--end:Menu item-->
-
+                        <!--end:Menu item-->
+                    @endcanany
                 </div>
                 <!--end::Menu-->
             </div>
